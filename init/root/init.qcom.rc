@@ -202,6 +202,9 @@ on boot
     chmod 0644 /sys/class/leds/red/pause_lo
     chmod 0644 /sys/class/leds/red/pause_hi
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
+
 # msm specific files that need to be created on /data
 on post-fs-data
     # Create directory for TZ Apps

@@ -151,6 +151,8 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USES_ION := true
 TARGET_USES_OVERLAY := true
 TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_GRALLOC1_ADAPTER := true
+TARGET_USES_HWC2 := true
 USE_OPENGL_RENDERER := true
 
 # GPS
@@ -215,6 +217,7 @@ TARGET_LD_SHIM_LIBS += /system/vendor/lib/libmmcamera2_stats_algorithm.so|/syste
 TARGET_LD_SHIM_LIBS += /system/vendor/lib/libmmcamera2_stats_modules.so|/system/lib/libshim_mmcamera2.so
 TARGET_LD_SHIM_LIBS += /system/vendor/lib64/lib-imsvt.so|/system/lib64/libshim_ims.so
 TARGET_LD_SHIM_LIBS += /system/vendor/lib64/libril-qc-qmi-1.so|/system/lib64/rild_socket.so
+TARGET_LD_SHIM_LIBS += /system/vendor/lib64/libizat_core.so|/system/lib64/libshims_get_process_name.so
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true

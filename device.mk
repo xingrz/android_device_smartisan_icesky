@@ -173,7 +173,8 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8992 \
     memtrack.msm8992 \
     liboverlay \
-    libtinyxml
+    libtinyxml \
+    libgenlock
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -185,6 +186,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    libshims_get_process_name \
     gps.msm8992
 
 PRODUCT_COPY_FILES += \

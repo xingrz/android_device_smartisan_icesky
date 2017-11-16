@@ -189,6 +189,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 

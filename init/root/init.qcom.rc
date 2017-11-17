@@ -319,9 +319,9 @@ on post-fs-data
     # qti-logkit data
     mkdir /data/misc/qti-logkit/ 0771 system system
     mkdir /data/misc/qti-logkit/shared-privileged/ 2770 system system
-    mkdir /data/misc/qti-logkit/shared-public/ 2770 system qcom_diag
+    mkdir /data/misc/qti-logkit/shared-public/ 2770 system oem_2950
     mkdir /data/misc/qti-logkit/socket-privileged/ 2770 system system
-    mkdir /data/misc/qti-logkit/socket-public/ 2750 system qcom_diag
+    mkdir /data/misc/qti-logkit/socket-public/ 2750 system oem_2950
     mkdir /data/misc/qti-logkit/logdata/ 2750 system shell
 
 service qfintverify /sbin/qfintverify
@@ -474,7 +474,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag
+    group bluetooth oem_2950
     disabled
 
 on property:wc_transport.start_root=true
@@ -486,7 +486,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag system
+    group bluetooth oem_2950 system
     disabled
 
 service config_bt_addr /system/bin/btnvtool -O
@@ -503,7 +503,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag net_bt_stack system
+    group bluetooth oem_2950 net_bt_stack system
     disabled
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
@@ -839,7 +839,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw oem_2950 diag log
 
 service ril-daemon3 /system/bin/rild -c 3
     class main
@@ -847,7 +847,7 @@ service ril-daemon3 /system/bin/rild -c 3
     socket rild-debug3 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw oem_2950 diag log
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
@@ -940,14 +940,14 @@ on property:sys.qbcharger.enable=false
 service diag_mdlog_start /system/bin/diag_mdlog
     class late_start
     user shell
-    group system qcom_diag sdcard_rw sdcard_r media_rw
+    group system oem_2950 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
 service diag_mdlog_stop /system/bin/diag_mdlog -k
     class late_start
     user shell
-    group system qcom_diag sdcard_rw sdcard_r media_rw
+    group system oem_2950 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
@@ -981,7 +981,7 @@ service RIDL /system/vendor/bin/RIDLClient.exe
     class late_start
     oneshot
     user system
-    group system inet log sdcard_r sdcard_rw qcom_diag
+    group system inet log sdcard_r sdcard_rw oem_2950
     # removed for security team - misc bluetooth radio gps wifi diag media_rw
     # limited to 12 groups.  Unused: audio usb net_bt_admin net_bt_stac net_raw net_admin
 
@@ -991,7 +991,7 @@ service LKCore-dbg /system/vendor/bin/LKCore
     oneshot
     disabled
     user root
-    group root system log qcom_diag net_raw
+    group root system log oem_2950 net_raw
 
 # service for USER
 service LKCore-rel /system/vendor/bin/LKCore
@@ -999,4 +999,4 @@ service LKCore-rel /system/vendor/bin/LKCore
     oneshot
     disabled
     user system
-    group system log qcom_diag
+    group system log oem_2950

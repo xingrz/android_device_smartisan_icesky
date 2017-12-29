@@ -559,13 +559,6 @@ service netmgrd /system/bin/netmgrd
     class main
     disabled
 
-service ipacm-diag /system/bin/ipacm-diag
-    class main
-    user system
-    socket ipacm_log_file dgram 660 system net_admin
-    group net_admin diag
-    disabled
-
 service ipacm /system/bin/ipacm
     class main
     user net_admin

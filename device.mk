@@ -95,6 +95,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.soundtrigger@2.0-impl \
     audiod \
     audio.a2dp.default \
     audio.r_submix.default \
@@ -139,10 +142,13 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl \
     libbthost_if
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    camera.device@1.0-impl \
     libshim_camera \
     libshim_mmcamera2
 
@@ -157,6 +163,11 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.graphics.composer@2.1-impl \
     copybit.msm8992 \
     gralloc.msm8992 \
     hwcomposer.msm8992 \
@@ -167,6 +178,10 @@ PRODUCT_PACKAGES += \
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -186,6 +201,10 @@ PRODUCT_PACKAGES += \
 # IRQ
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+
+# Keystore
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -226,6 +245,7 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
     libc2dcolorconvert \
     libextmedia_jni \
     libOmxAacEnc \
@@ -239,6 +259,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.msm8992
 
 # QMI
@@ -249,6 +270,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/init,)
 
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # RIL
 PRODUCT_PACKAGES += \
     libshim_ims \
@@ -256,8 +281,25 @@ PRODUCT_PACKAGES += \
     libxml2 \
     libprotobuf-cpp-full
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
+
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     libwpa_client \
     hostapd \
     wcnss_service \

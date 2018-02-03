@@ -72,10 +72,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Device was launched with M
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.first_api_level=21
-
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 

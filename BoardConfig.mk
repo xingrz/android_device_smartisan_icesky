@@ -177,6 +177,9 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
+# Power
+TARGET_USES_INTERACTION_BOOST := true
+
 # Protobuf
 PROTOBUF_SUPPORTED := true
 

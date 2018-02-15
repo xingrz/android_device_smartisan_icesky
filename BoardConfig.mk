@@ -204,6 +204,11 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS += /system/lib/hw/camera.msm8992.so|/system/lib/libshim_camera.so
+TARGET_LD_SHIM_LIBS += /system/vendor/lib/libmmcamera2_stats_modules.so|/system/lib/libshim_mmcamera2.so
+TARGET_LD_SHIM_LIBS += /system/vendor/lib64/lib-imsvt.so|/system/lib64/libshim_ims.so
+
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
 

@@ -431,17 +431,17 @@ service cnd /vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     shutdown critical
 
-service tftp_server /system/bin/tftp_server
+service tftp_server /vendor/bin/tftp_server
    class core
    user root
 
@@ -451,7 +451,7 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
-service start_hci_filter /system/bin/wcnss_filter
+service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth oem_2950
@@ -463,13 +463,13 @@ on property:wc_transport.start_root=true
 on property:wc_transport.start_root=false
     stop hci_filter_root
 
-service hci_filter_root /system/bin/wcnss_filter
+service hci_filter_root /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth oem_2950 system
     disabled
 
-service config_bt_addr /system/bin/btnvtool -O
+service config_bt_addr /vendor/bin/btnvtool -O
     class core
     user bluetooth
     group bluetooth radio
@@ -511,7 +511,7 @@ service hciattach_ath3k /system/bin/sh /system/etc/init.ath3k.bt.sh
      disabled
      oneshot
 
-service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
+service bt-dun /vendor/bin/dun-server /dev/smd7 /dev/rfcomm0
     class late_start
     user bluetooth
     group bluetooth net_bt_admin inet
@@ -532,27 +532,27 @@ service btsnoop /system/bin/btsnoop
    disabled
    oneshot
 
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
+service ftmd /system/bin/logwrapper /vendor/bin/ftmdaemon
     class late_start
     user root
     group bluetooth net_bt_admin misc diag net_bt
     disabled
     oneshot
 
-service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
+service port-bridge /vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     class main
     user radio system
     group radio system inet
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag
     disabled
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class main
     disabled
 
@@ -639,7 +639,7 @@ service ptt_ffbm /system/bin/ptt_socket_app -f -d
     disabled
     oneshot
 
-service ftm_ffbm /system/bin/ftmdaemon
+service ftm_ffbm /vendor/bin/ftmdaemon
     user root
     group root
     disabled
@@ -824,7 +824,7 @@ service vm_bms /system/bin/vm_bms
     group root
     disabled
 
-service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+service msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
     class core
     user root

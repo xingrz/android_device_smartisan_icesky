@@ -289,7 +289,6 @@ vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
 
 # Qualcomm framework
-bin/irsc_util
 bin/mmbn-daemon
 etc/permissions/qti_permissions.xml|2826b33ed8e2756cc748c80bd6c466ff8af97ac5
 vendor/lib/libdiag.so

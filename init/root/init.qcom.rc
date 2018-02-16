@@ -808,17 +808,6 @@ on ffbm
     trigger early-boot
     trigger mmi
 
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
-
 service qbcharger /charger -m 1
     disabled
     oneshot

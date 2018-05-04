@@ -225,9 +225,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl
 
-# LiveDisplay native
+# LiveDisplay
 PRODUCT_PACKAGES += \
-    libjni_livedisplay
+    vendor.mokee.livedisplay@1.0-service-legacymm
 
 # Media
 PRODUCT_COPY_FILES += \

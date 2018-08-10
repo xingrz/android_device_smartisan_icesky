@@ -201,10 +201,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/recovery.fstab
 TARGET_RIL_VARIANT := caf
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-include device/qcom/sepolicy/legacy-sepolicy.mk
-
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor-minimal
 
 # Shims
 TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libshim_atomic.so

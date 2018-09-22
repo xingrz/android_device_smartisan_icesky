@@ -135,9 +135,9 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # MK Hardware
 BOARD_HARDWARE_CLASS += \
-    hardware/mokee/mkhw \
+    hardware/cyanogen/cmhw \
     $(DEVICE_PATH)/mkhw
-BOARD_USES_MOKEE_HARDWARE := true
+BOARD_USES_CYANOGEN_HARDWARE := true
 
 # CNE and DPM
 BOARD_USES_QCNE := true

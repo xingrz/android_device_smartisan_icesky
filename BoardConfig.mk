@@ -175,6 +175,7 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Filesystem
+BOARD_ROOT_EXTRA_FOLDERS := firmware bt_firmware persist
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Power

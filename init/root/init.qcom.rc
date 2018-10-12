@@ -40,17 +40,14 @@ on init
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /mnt/media_rw/uicc0 0700 media_rw media_rw
     mkdir /mnt/media_rw/uicc1 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
     mkdir /storage/uicc0 0700 root root
     mkdir /storage/uicc1 0700 root root
     mkdir /storage/usbotg 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
@@ -89,6 +86,9 @@ on boot
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
+    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
+    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
 
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
@@ -192,12 +192,38 @@ on boot
 
     # Socket location for RIDL
     mkdir /dev/socket/RIDL 2770 system system
+    # LED related
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chown system system /sys/class/leds/blue/ramp_step_ms
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/green/duty_pcts
+    chown system system /sys/class/leds/blue/duty_pcts
+    chmod 0644 /sys/class/leds/red/brightness
+    chmod 0644 /sys/class/leds/green/brightness
+    chmod 0644 /sys/class/leds/blue/brightness
+    chmod 0644 /sys/class/leds/red/blink
+    chmod 0644 /sys/class/leds/green/blink
+    chmod 0644 /sys/class/leds/blue/blink
+    chmod 0644 /sys/class/leds/red/ramp_step_ms
+    chmod 0644 /sys/class/leds/green/ramp_step_ms
+    chmod 0644 /sys/class/leds/blue/ramp_step_ms
+    chmod 0644 /sys/class/leds/red/duty_pcts
+    chmod 0644 /sys/class/leds/green/duty_pcts
+    chmod 0644 /sys/class/leds/blue/duty_pcts
 
 # msm specific files that need to be created on /data
 on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
+    write /sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/scheduler noop
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     #Create folder for mm-qcamera-daemon
     mkdir /data/misc/camera 0770 camera camera
@@ -670,14 +696,11 @@ service ftm_ffbm /system/bin/ftmdaemon
     disabled
     oneshot
 
-service cnss_diag /system/bin/cnss_diag --q
-    class main
+service bcm_btwlan  /system/bin/sh /system/etc/init.bcm.btwlan.sh
+    class late_start
     user root
     group root
     oneshot
-
-service cnss-daemon /system/bin/cnss-daemon -n -l
-    class late_start
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
@@ -819,12 +842,6 @@ service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
     user root
     disabled
-    oneshot
-
-service usb_uicc_daemon /system/bin/usb_uicc_client
-    class main
-    user system
-    group system log net_raw
     oneshot
 
 on property:sys.usb_uicc.enabled=1

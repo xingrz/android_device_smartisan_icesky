@@ -16,7 +16,7 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 # Start in global mode
-ro.telephony.default_network=10
+ro.telephony.default_network=22
 
 debug.sf.hw=1
 debug.egl.hw=1
@@ -32,7 +32,7 @@ dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
 ro.sf.lcd_density=560
-ro.hdmi.enable=true
+ro.hdmi.enable=false
 persist.speaker.prot.enable=false
 #0 is default(30 min)
 persist.spkr.cal.duration=0
@@ -45,6 +45,12 @@ persist.cne.feature=1
 
 # system props for setting mbn file location
 persist.radio.app_hw_mbn_path=/firmware/image/modem_pr/mcfg/configs/mcfg_hw/generic/common/MSM8994/LA
+
+#
+# system props for the dpm module
+#
+persist.dpm.feature=7
+persist.dpm.nsrm.bkg.evt=3955
 
 #system props for the MM modules
 
@@ -61,8 +67,8 @@ av.debug.disable.pers.cache=true
 
 #3379827: Decimal sum after adding WAV parser flag
 #37491 is decimal sum of supported codecs in AAL
-#codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
-mm.enable.qcom_parser=3379827
+#codecs: DivX DivXHD AVI AC3 AAC QCP DTS 3G2 MP2TS MKV
+mm.enable.qcom_parser=169571
 
 # Enable AwesomePlayer stats
 persist.debug.sf.statistics=1
@@ -97,7 +103,7 @@ persist.timed.enable=true
 ro.opengles.version=196610
 
 # System property for cabl
-ro.qualcomm.cabl=2
+ro.qualcomm.cabl=0
 
 #
 # System props for telephony
@@ -121,7 +127,7 @@ persist.fuse_sdcard=true
 qcom.bluetooth.soc=rome
 
 #system prop for wipower support
-ro.bluetooth.wipower=true
+ro.bluetooth.wipower=false
 
 #Set this true as ROME which is programmed
 #as embedded wipower mode by deafult
@@ -133,7 +139,7 @@ ro.bluetooth.emb_wp_mode=true
 ro.qc.sdk.audio.ssr=false
 persist.audio.ssr.3mic=false
 ##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
@@ -170,6 +176,9 @@ audio.offload.track.enable=true
 #Enable music through deep buffer
 audio.deep_buffer.media=true
 
+#Enable line out PA in deepbuffer playback by default
+audio.deepbuffer.hifi.enabled=true
+
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
 
@@ -191,14 +200,69 @@ ro.hwui.text_small_cache_height=1024
 ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=1024
 
-# enable navigation bar
-qemu.hw.mainkeys=0
+# disable navigation bar
+qemu.hw.mainkeys=1
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
 
 #selects CoreSight configuration to enable
-persist.debug.coresight.config=stm-events
+#persist.debug.coresight.config=stm-events
 
 # Create zram disk
 ro.config.zram=true
+
+persist.radio.lte_vrte_ltd=1
+#Redirecting party number feature
+persist.radio.redir_party_num=0
+
+#Ap defined ecclist
+ro.ril.ecclist=911,112,000,08,110,118,119,999,120,122
+
+#set eons prefence domain to ps
+persist.radio.sglte.eons_domain=ps
+
+# calibrated speaker impedance
+persist.speaker.calibrated.imp=0.0
+
+#start 8992 mbn ota daemon
+persist.radio.start_ota_daemon=1
+
+#property to enable wfd demo feature
+wfd.demo.enable=0
+
+#phone color
+ro.housing.color=black
+
+#Enable RAT in operator searching result
+persist.radio.rat_on=combine
+
+#Disable SMS on Access channel
+persist.radio.force_on_dc=true
+
+#Headset button input device name
+ro.system.headsetinput=msm8994-tomtom-snd-card Button Jack
+
+#Report PS operator name for SRLTE
+persist.radio.sglte.eons_domain=ps
+
+#codename
+ro.product.codename=Smartisan T2
+
+#Enable IMS
+persist.radio.calls.on.ims=true
+persist.radio.jbims=1
+persist.radio.vrte_logic=1
+
+#Dirac audio effect
+ro.dirac.acs.controller=afm
+ro.dirac.afm.mode=local
+ro.dirac.max_active.powersound=3
+ro.dirac.max_active.headset=3
+ro.dirac.acs.ignore_error=1
+
+#Modem: for CT operator requirement, update CT sw version.
+#Default is Smartisan v2.5.5
+ro.ril.ct_sw_version=v2.5.5
+
+ro.radio.apn.protocal=IPV4V6

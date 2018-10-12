@@ -306,3 +306,6 @@
 4097:4294967295:3009
 /* <WLPS QMI Service ID - 0x39>:<WLFW QMI Instance ID - all instances>:<Client Group ID> */
 57:4294967295:1000
+/* RedTea add -S */
+50:4294967295:1001
+/* RedTea add -E */

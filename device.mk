@@ -142,6 +142,10 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    libshim_camera \
+    libshim_mmcamera2
+
+PRODUCT_PACKAGES += \
     Snap
 
 # Connectivity Engine support (CNE)
@@ -231,6 +235,7 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    libshim_ims \
     librmnetctl \
     libxml2 \
     libprotobuf-cpp-full

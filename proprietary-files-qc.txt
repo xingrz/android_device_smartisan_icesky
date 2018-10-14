@@ -76,10 +76,16 @@ etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
+lib/libgps.utils.so
 lib/libloc_api_v02.so
+lib/libloc_core.so
 lib/libloc_ds_api.so
+lib/libloc_eng.so
+lib64/libgps.utils.so
 lib64/libloc_api_v02.so
+lib64/libloc_core.so
 lib64/libloc_ds_api.so
+lib64/libloc_eng.so
 vendor/bin/slim_daemon
 vendor/lib/hw/flp.default.so
 vendor/lib/libasn1cper.so

@@ -32,20 +32,17 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <resources>
 
+   <!-- The duration (in milliseconds) for the outgoing sms authorization request to timeout.-->
+   <integer name="config_sms_authorization_timeout_ms">15000</integer>
+
+   <!-- Enable SMS authorization support -->
+   <bool name="config_sms_authorization_enabled">true</bool>
+
     <!-- Enable overlay for all location components. -->
-    <bool name="config_enableNetworkLocationOverlay" translatable="false">false</bool>
-    <bool name="config_enableFusedLocationOverlay" translatable="false">false</bool>
     <string name="config_networkLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
     <string name="config_fusedLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
 
     <bool name="config_allowAllRotations">true</bool>
-
-    <!-- Enable doze mode -->
-    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-    <bool name="config_dozeAfterScreenOff">true</bool>
-    <!-- Screen brightness when dozing. -->
-    <integer name="config_screenBrightnessDoze">17</integer>
-    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
@@ -63,6 +60,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"wlan0"</item>
+        <item>"wigig0"</item>
+        <item>"softap0"</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of network
@@ -85,6 +84,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item>"mobile_ims,11,0,2,60000,true"</item>
         <item>"mobile_cbs,12,0,2,60000,true"</item>
         <item>"bluetooth,7,7,2,-1,true"</item>
+        <item>"mobile_emergency,15,0,5,-1,true"</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of radio
@@ -112,7 +112,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <integer-array translatable="false" name="config_tether_upstream_types">
         <item>0</item>
         <item>1</item>
-        <item>4</item>
         <item>5</item>
         <item>7</item>
     </integer-array>
@@ -125,6 +124,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
+
+    <!-- If this is true, the screen will come on when you plug/unplug usb/power/whatever. -->
+    <bool name="config_unplugTurnsOnScreen">true</bool>
 
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true-->
@@ -172,6 +174,20 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- Whether camera shutter sound is forced or not  (country specific). -->
     <bool name="config_camera_sound_forced">false</bool>
 
+    <!-- Configuration to enable non-default PDP during IWLAN
+    <bool name="config_feature_iwlan_enabled">true</bool> -->
+
+    <!-- Flag specifying whether VoLTE, VT and WFC is available on device -->
+    <bool name="config_device_volte_available">true</bool>
+    <bool name="config_device_vt_available">true</bool>
+    <bool name="config_device_wfc_ims_available">true</bool>
+
+    <!-- Flag specifying whether VoLTE & VT should be available for carrier: independent of
+         carrier provisioning. If false: hard disabled. If true: then depends on carrier
+         provisioning, availability etc -->
+    <bool name="config_carrier_volte_available">true</bool>
+
+
     <string-array name="config_mobile_tcp_buffers">
         <item>"lte:2097152,4194304,8388608,262144,524288,1048576"</item>
         <item>"lte_ca:2097152,4194304,8388608,262144,524288,1048576"</item>
@@ -194,11 +210,33 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     state changes. Voice radio tech change will always trigger an update of
     phone object irrespective of this config -->
     <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
-
-    <!-- Disable Manual Network Selection in Global Mode -->
-    <string translatable="false" name="prohibit_manual_network_selection_in_gobal_mode">true</string>
-
     <!--  Define Google play service package for FRP-->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
+
+    <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
+    on the headphone/microphone jack. When false use the older uevent framework -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm64/boot-framework.oat"</item>
+        <item>"/system/framework/oat/arm64/services.odex"</item>
+        <item>"/system/framework/arm64/boot.oat"</item>
+        <item>"/system/framework/arm64/boot-core-libart.oat"</item>
+    </string-array>
+
+    <!-- Whether WiFi display is supported by this device.
+         There are many prerequisites for this feature to work correctly.
+         Here are a few of them:
+         * The WiFi radio must support WiFi P2P.
+         * The WiFi radio must support concurrent connections to the WiFi display and
+           to an access point.
+         * The Audio Flinger audio_policy.conf file must specify a rule for the "r_submix"
+           remote submix module.  This module is used to record and stream system
+           audio output to the WiFi display encoder in the media server.
+         * The remote submix module "audio.r_submix.default" must be installed on the device.
+         * The device must be provisioned with HDCP keys (for protected content).
+    -->
+    <bool name="config_enableWifiDisplay">true</bool>
 
 </resources>

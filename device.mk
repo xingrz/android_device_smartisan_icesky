@@ -273,7 +273,6 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libshim_ims \
     rild_socket \
     librmnetctl \
     libxml2 \

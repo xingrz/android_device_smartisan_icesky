@@ -250,11 +250,6 @@ persist.radio.sglte.eons_domain=ps
 #codename
 ro.product.codename=Smartisan T2
 
-#Enable IMS
-persist.radio.calls.on.ims=true
-persist.radio.jbims=1
-persist.radio.vrte_logic=1
-
 #Dirac audio effect
 ro.dirac.acs.controller=afm
 ro.dirac.afm.mode=local

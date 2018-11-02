@@ -233,19 +233,6 @@ on property:init.svc.scitd=running
 
     chown nfc factory /dev/bcm2079x
     chmod 0660 /dev/bcm2079x
-
-service imsqmidaemon /vendor/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group radio log diag
-
-service imsdatadaemon /vendor/bin/imsdatadaemon
-    class main
-    user system
-    socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
-    disabled
 #
 #service wcnss-service /system/bin/wcnss_service
 #    class late_start
@@ -253,24 +240,6 @@ service imsdatadaemon /vendor/bin/imsdatadaemon
 #    group system wifi
 #    oneshot
 #
-on property:sys.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
-
-service ims_rtp_daemon /vendor/bin/ims_rtp_daemon
-   class main
-   user system
-   socket ims_rtpd stream 0660 system radio
-   group radio diag inet log
-   disabled
-
-on property:sys.ims.DATA_DAEMON_STATUS=1
-    start ims_rtp_daemon
-
-service imscmservice /vendor/bin/imscmservice
-   class main
-   user system
-   group radio diag inet log
-
 service ppd /vendor/bin/mm-pp-daemon
     class late_start
     user system

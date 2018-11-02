@@ -37,26 +37,6 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := MediaBuffer.cpp
-
-LOCAL_SHARED_LIBRARIES := \
-    libbinder \
-    libui \
-    libgui \
-    libutils \
-    libcutils \
-    libstagefright_foundation
-
-LOCAL_MODULE := libshim_ims
-LOCAL_MODULE_TAGS := optional
-
-LOCAL_VENDOR_MODULE := true
-
-include $(BUILD_SHARED_LIBRARY)
-
-
-include $(CLEAR_VARS)
-
 LOCAL_SRC_FILES := rild_socket.c
 
 LOCAL_MODULE := rild_socket

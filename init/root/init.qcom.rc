@@ -600,7 +600,7 @@ service amp_unload /system/bin/amploader -u
 
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -O/data/vendor/wifi/wpa/sockets \
-    -puse_p2p_group_interface=1p2p_device=1 \
+    -puse_p2p_group_interface \
     -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT

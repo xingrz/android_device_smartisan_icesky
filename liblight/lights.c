@@ -221,12 +221,16 @@ set_speaker_light_locked(struct light_device_t* dev,
         // down the lut. This effectively doubles the ramp duration.
         write_int(RED_PAUSE_HI_FILE, pauseHi);
         write_int(RED_RAMP_STEP_MS_FILE, stepDuration);
+        ALOGE("set_speaker_light_locked duty=\"%s\", offMS=%d, pauseHi=%d, stepDuration=%d\n",
+            duty, offMS, pauseHi, stepDuration);
         free(duty);
 
         // start the party
         write_int(RED_BLINK_FILE, 1);
     } else {
         write_int(RED_LED_FILE, brightness);
+        ALOGE("set_speaker_light_locked brightness=%d\n",
+            brightness);
     }
 
     return 0;

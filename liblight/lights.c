@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
  * Copyright (C) 2014 The  Linux Foundation. All rights reserved.
+ * Copyright (C) 2018 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,26 +45,31 @@ static struct light_state_t g_battery;
 char const*const RED_LED_FILE
         = "/sys/class/leds/red/brightness";
 
-char const*const GREEN_LED_FILE
-        = "/sys/class/leds/green/brightness";
-
-char const*const BLUE_LED_FILE
-        = "/sys/class/leds/blue/brightness";
-
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
-char const*const BUTTON_FILE
-        = "/sys/class/leds/button-backlight/brightness";
+char const*const RED_DUTY_PCTS_FILE
+        = "/sys/class/leds/red/duty_pcts";
+
+char const*const RED_START_IDX_FILE
+        = "/sys/class/leds/red/start_idx";
+
+char const*const RED_PAUSE_LO_FILE
+        = "/sys/class/leds/red/pause_lo";
+
+char const*const RED_PAUSE_HI_FILE
+        = "/sys/class/leds/red/pause_hi";
+
+char const*const RED_RAMP_STEP_MS_FILE
+        = "/sys/class/leds/red/ramp_step_ms";
 
 char const*const RED_BLINK_FILE
         = "/sys/class/leds/red/blink";
 
-char const*const GREEN_BLINK_FILE
-        = "/sys/class/leds/green/blink";
-
-char const*const BLUE_BLINK_FILE
-        = "/sys/class/leds/blue/blink";
+#define RAMP_SIZE 8
+static int BRIGHTNESS_RAMP[RAMP_SIZE]
+        = { 0, 12, 25, 37, 50, 72, 85, 100 };
+#define RAMP_STEP_DURATION 50
 
 /**
  * device methods
@@ -85,6 +91,28 @@ write_int(char const* path, int value)
     if (fd >= 0) {
         char buffer[20];
         int bytes = snprintf(buffer, sizeof(buffer), "%d\n", value);
+        ssize_t amt = write(fd, buffer, (size_t)bytes);
+        close(fd);
+        return amt == -1 ? -errno : 0;
+    } else {
+        if (already_warned == 0) {
+            ALOGE("write_int failed to open %s\n", path);
+            already_warned = 1;
+        }
+        return -errno;
+    }
+}
+
+static int
+write_str(char const* path, char* value)
+{
+    int fd;
+    static int already_warned = 0;
+
+    fd = open(path, O_RDWR);
+    if (fd >= 0) {
+        char buffer[1024];
+        int bytes = snprintf(buffer, sizeof(buffer), "%s\n", value);
         ssize_t amt = write(fd, buffer, (size_t)bytes);
         close(fd);
         return amt == -1 ? -errno : 0;
@@ -126,14 +154,34 @@ set_light_backlight(struct light_device_t* dev,
     return err;
 }
 
+static char*
+get_scaled_duty_pcts(int brightness)
+{
+    char *buf = malloc(5 * RAMP_SIZE * sizeof(char));
+    char *pad = "";
+    int i = 0;
+
+    memset(buf, 0, 5 * RAMP_SIZE * sizeof(char));
+
+    for (i = 0; i < RAMP_SIZE; i++) {
+        char temp[5] = "";
+        snprintf(temp, sizeof(temp), "%s%d", pad, (BRIGHTNESS_RAMP[i] * brightness / 255));
+        strcat(buf, temp);
+        pad = ",";
+    }
+    ALOGV("%s: brightness=%d duty=%s", __func__, brightness, buf);
+    return buf;
+}
+
 static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    int red, green, blue;
+    int brightness;
     int blink;
     int onMS, offMS;
-    unsigned int colorRGB;
+    int stepDuration, pauseHi;
+    char *duty;
 
     if(!dev) {
         return -1;
@@ -151,49 +199,34 @@ set_speaker_light_locked(struct light_device_t* dev,
             break;
     }
 
-    colorRGB = state->color;
+    brightness = is_lit(state) ? 255 : 0;
+    blink = onMS > 0 && offMS > 0;
 
-#if 0
-    ALOGD("set_speaker_light_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
-            state->flashMode, colorRGB, onMS, offMS);
-#endif
-
-    red = (colorRGB >> 16) & 0xFF;
-    green = (colorRGB >> 8) & 0xFF;
-    blue = colorRGB & 0xFF;
-
-    if (onMS > 0 && offMS > 0) {
-        /*
-         * if ON time == OFF time
-         *   use blink mode 2
-         * else
-         *   use blink mode 1
-         */
-        if (onMS == offMS)
-            blink = 2;
-        else
-            blink = 1;
-    } else {
-        blink = 0;
-    }
+    // disable all blinking to start
+    write_int(RED_BLINK_FILE, 0);
 
     if (blink) {
-        if (red) {
-            if (write_int(RED_BLINK_FILE, blink))
-                write_int(RED_LED_FILE, 0);
-	}
-        if (green) {
-            if (write_int(GREEN_BLINK_FILE, blink))
-                write_int(GREEN_LED_FILE, 0);
-	}
-        if (blue) {
-            if (write_int(BLUE_BLINK_FILE, blink))
-                write_int(BLUE_LED_FILE, 0);
-	}
+        stepDuration = RAMP_STEP_DURATION;
+        pauseHi = onMS - (stepDuration * RAMP_SIZE * 2);
+        if (stepDuration * RAMP_SIZE * 2 > onMS) {
+            stepDuration = onMS / (RAMP_SIZE * 2);
+            pauseHi = 0;
+        }
+
+        write_int(RED_START_IDX_FILE, 0);
+        duty = get_scaled_duty_pcts(brightness);
+        write_str(RED_DUTY_PCTS_FILE, duty);
+        write_int(RED_PAUSE_LO_FILE, offMS);
+        // The led driver is configured to ramp up then ramp
+        // down the lut. This effectively doubles the ramp duration.
+        write_int(RED_PAUSE_HI_FILE, pauseHi);
+        write_int(RED_RAMP_STEP_MS_FILE, stepDuration);
+        free(duty);
+
+        // start the party
+        write_int(RED_BLINK_FILE, 1);
     } else {
-        write_int(RED_LED_FILE, red);
-        write_int(GREEN_LED_FILE, green);
-        write_int(BLUE_LED_FILE, blue);
+        write_int(RED_LED_FILE, brightness);
     }
 
     return 0;
@@ -248,14 +281,7 @@ static int
 set_light_buttons(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    int err = 0;
-    if(!dev) {
-        return -1;
-    }
-    pthread_mutex_lock(&g_lock);
-    err = write_int(BUTTON_FILE, state->color & 0xFF);
-    pthread_mutex_unlock(&g_lock);
-    return err;
+    return 0;
 }
 
 /** Close the lights device */
@@ -305,7 +331,7 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     memset(dev, 0, sizeof(*dev));
 
     dev->common.tag = HARDWARE_DEVICE_TAG;
-    dev->common.version = 0;
+    dev->common.version = LIGHTS_DEVICE_API_VERSION_2_0;
     dev->common.module = (struct hw_module_t*)module;
     dev->common.close = (int (*)(struct hw_device_t*))close_lights;
     dev->set_light = set_light;
@@ -327,6 +353,6 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
     .name = "lights Module",
-    .author = "Google, Inc.",
+    .author = "The Mokee Open Source Project",
     .methods = &lights_module_methods,
 };

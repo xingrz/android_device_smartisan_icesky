@@ -35,7 +35,7 @@ on early-init
 
 on init
     export LD_SHIM_LIBS \
-        /system/lib/hw/camera.msm8992.so|/system/lib/libshim_camera.so:\
+        /system/lib/hw/camera.vendor.msm8992.so|/system/lib/libshim_camera.so:\
         /system/vendor/lib/libmmcamera2_stats_modules.so|/system/lib/libshim_mmcamera2.so:\
         /system/vendor/lib64/lib-imsvt.so|/system/lib64/libshim_ims.so
 

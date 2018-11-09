@@ -189,6 +189,9 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 
+# Protobuf
+PROTOBUF_SUPPORTED := true
+
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true

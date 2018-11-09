@@ -33,12 +33,12 @@ PRODUCT_DEVICE := icesky
 PRODUCT_MANUFACTURER := smartisan
 PRODUCT_MODEL := SM801
 
-TARGET_VENDOR_DEVICE_NAME := icesky_msm8992
-TARGET_VENDOR_PRODUCT_NAME := icesky_msm8992
-
 PRODUCT_GMS_CLIENTID_BASE := android-smartisan
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME="icesky_msm8992" \
     PRIVATE_BUILD_DESC="icesky_msm8992-user 5.1.1 LMY47V 1 release-keys"
 
 BUILD_FINGERPRINT := SMARTISAN/icesky_msm8992/icesky_msm8992:5.1.1/LMY47V/1:user/release-keys
+
+TARGET_VENDOR := Smartisan

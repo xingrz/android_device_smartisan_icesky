@@ -42,7 +42,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="icesky_msm8992-user 5.1.1 LMY47V 1 release-keys"
 
 BUILD_FINGERPRINT := SMARTISAN/icesky_msm8992/icesky_msm8992:5.1.1/LMY47V/1:user/release-keys
-
-# Sign bootable images
-PRODUCT_SUPPORTS_BOOT_SIGNER := true
-PRODUCT_VERITY_SIGNING_KEY := build/target/product/security/verity

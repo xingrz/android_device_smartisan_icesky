@@ -31,7 +31,3 @@ PRODUCT_MODEL := SM801
 
 TARGET_VENDOR_DEVICE_NAME := icesky_msm8992
 TARGET_VENDOR_PRODUCT_NAME := icesky_msm8992
-
-# Sign bootable images
-PRODUCT_SUPPORTS_BOOT_SIGNER := true
-PRODUCT_VERITY_SIGNING_KEY := build/target/product/security/verity

@@ -22,9 +22,9 @@ vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
 
 # CNE
-etc/permissions/com.quicinc.cne.xml|e99e631d8b06ba4680529e9e4004d8d05baf6904
-framework/com.quicinc.cne.api-V1.0-java.jar|6fb1bf2ea642ce0f0c8c4716639cab7a9810cc3e
-framework/com.quicinc.cne.jar|88fc21cd7dd69ae37607a9a671d4913d82c2e336
+etc/permissions/com.quicinc.cne.xml:vendor/etc/permissions/com.quicinc.cne.xml|e99e631d8b06ba4680529e9e4004d8d05baf6904
+framework/com.quicinc.cne.api-V1.0-java.jar:vendor/framework/com.quicinc.cne.api-V1.0-java.jar|6fb1bf2ea642ce0f0c8c4716639cab7a9810cc3e
+framework/com.quicinc.cne.jar:vendor/framework/com.quicinc.cne.jar|88fc21cd7dd69ae37607a9a671d4913d82c2e336
 vendor/bin/cnd|fc7ad0d8041e35df029531ad6b5e972fdbfbfbc3
 vendor/lib/com.quicinc.cne.api@1.0.so|60dd6f1fa0c70523f91342b07be6c82e733cdb90
 vendor/lib/com.quicinc.cne.constants@1.0.so|0d3b2fd95e8ea3525467d8ca38865ac2a9d3f4c7
@@ -71,7 +71,7 @@ bin/xtwifi-client:vendor/bin/xtwifi-client
 bin/xtwifi-inet-agent:vendor/bin/xtwifi-inet-agent
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.vzw_library.xml
-etc/permissions/com.qualcomm.location.xml|ee15154d1727abb16a14d89eb5e7fdc252a93f05
+etc/permissions/com.qualcomm.location.xml:vendor/etc/permissions/com.qualcomm.location.xml|ee15154d1727abb16a14d89eb5e7fdc252a93f05
 etc/permissions/izat.xt.srv.xml
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
@@ -298,7 +298,7 @@ vendor/lib64/libtzdrmgenprov.so
 
 # Qualcomm framework
 bin/mmbn-daemon:vendor/bin/mmbn-daemon
-etc/permissions/qti_permissions.xml|2826b33ed8e2756cc748c80bd6c466ff8af97ac5
+etc/permissions/qti_permissions.xml:vendor/etc/permissions/qti_permissions.xml|2826b33ed8e2756cc748c80bd6c466ff8af97ac5
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so

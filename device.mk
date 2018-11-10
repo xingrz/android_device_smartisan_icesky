@@ -76,6 +76,9 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=21
 
+# Haters gonna hate..
+PRODUCT_CHARACTERISTICS := nosdcard
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080

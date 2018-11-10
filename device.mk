@@ -162,6 +162,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     cneapiclient \
     com.quicinc.cne \
+    libcnefeatureconfig \
     services-ext
 
 # Display
@@ -189,6 +190,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
     libshims_get_process_name \
     gps.msm8992 \
     libgps.utils \
@@ -199,7 +201,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \
     $(LOCAL_PATH)/gps/etc/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/gps/etc/izat.conf:system/etc/izat.conf \
-    $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf \
+    $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -257,19 +259,22 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     libc2dcolorconvert \
     libextmedia_jni \
+    libdivxdrmdecrypt \
+    libdrmclearkeyplugin \
+    libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxVdec \
+    libOmxVdecHevc \
     libOmxVenc \
     libstagefrighthw
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
-    power.msm8992
+    android.hardware.power@1.0-service-qti
 
 # QMI
 PRODUCT_PACKAGES += \

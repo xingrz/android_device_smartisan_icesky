@@ -187,7 +187,10 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     libshims_get_process_name \
-    gps.msm8992
+    gps.msm8992 \
+    libgps.utils \
+    libloc_core \
+    libloc_eng
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/flp.conf:system/etc/flp.conf \

@@ -384,11 +384,11 @@ vendor/firmware/BCM20795A2_001.003.025.0005.0051_Generic_I2C_NCD_Unsigned_config
 bin/sensors.qcom
 etc/sensors/sensor_def_qcomdev.conf
 vendor/lib/hw/activity_recognition.msm8992.so
-vendor/lib/hw/sensors.msm8992.so
+vendor/lib/hw/sensors.msm8992.so:vendor/lib/sensors.vendor.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib64/hw/activity_recognition.msm8992.so
-vendor/lib64/hw/sensors.msm8992.so
+vendor/lib64/hw/sensors.msm8992.so:vendor/lib64/sensors.vendor.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 

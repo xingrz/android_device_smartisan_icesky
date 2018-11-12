@@ -49,4 +49,9 @@ setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false "$CLEAN_VENDOR"
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC_QC" "$SECTION"
 
+BLOB_ROOT="$MK_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+
+# QMI
+sed -i 's|qcom_diag|oem_2950|g' $BLOB_ROOT/vendor/etc/permissions/qti_permissions.xml
+
 "$MY_DIR"/setup-makefiles.sh

@@ -181,22 +181,6 @@ on boot
     chown radio radio /data/misc/radio/copy_complete
     chmod 0660 /data/misc/radio/copy_complete
 
-    # LED related
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/red/blink
-    chown system system /sys/class/leds/red/ramp_step_ms
-    chown system system /sys/class/leds/red/duty_pcts
-    chown system system /sys/class/leds/red/start_idx
-    chown system system /sys/class/leds/red/pause_lo
-    chown system system /sys/class/leds/red/pause_hi
-    chmod 0644 /sys/class/leds/red/brightness
-    chmod 0644 /sys/class/leds/red/blink
-    chmod 0644 /sys/class/leds/red/ramp_step_ms
-    chmod 0644 /sys/class/leds/red/duty_pcts
-    chmod 0644 /sys/class/leds/red/start_idx
-    chmod 0644 /sys/class/leds/red/pause_lo
-    chmod 0644 /sys/class/leds/red/pause_hi
-
     # Wifi firmware reload path
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
 

@@ -212,8 +212,8 @@ include device/qcom/sepolicy/legacy-sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Shims
-TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.msm8992.so|/vendor/lib/libshim_atomic.so
-TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.msm8992.so|/vendor/lib/libshim_camera.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libshim_atomic.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libshim_camera.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_algorithm.so|/vendor/lib/libshim_atomic.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_modules.so|/vendor/lib/libshim_mmcamera2.so
 TARGET_LD_SHIM_LIBS += /vendor/lib64/lib-imsvt.so|/vendor/lib64/libshim_ims.so

@@ -212,13 +212,13 @@ include device/qcom/sepolicy/legacy-sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Shims
-TARGET_LD_SHIM_LIBS += /system/lib/hw/camera.msm8992.so|/system/lib/libshim_atomic.so
-TARGET_LD_SHIM_LIBS += /system/lib/hw/camera.msm8992.so|/system/lib/libshim_camera.so
-TARGET_LD_SHIM_LIBS += /system/vendor/lib/libmmcamera2_stats_algorithm.so|/system/lib/libshim_atomic.so
-TARGET_LD_SHIM_LIBS += /system/vendor/lib/libmmcamera2_stats_modules.so|/system/lib/libshim_mmcamera2.so
-TARGET_LD_SHIM_LIBS += /system/vendor/lib64/lib-imsvt.so|/system/lib64/libshim_ims.so
-TARGET_LD_SHIM_LIBS += /system/vendor/lib64/libril-qc-qmi-1.so|/system/lib64/rild_socket.so
-TARGET_LD_SHIM_LIBS += /system/vendor/lib64/libizat_core.so|/system/lib64/libshims_get_process_name.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.msm8992.so|/vendor/lib/libshim_atomic.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.msm8992.so|/vendor/lib/libshim_camera.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_algorithm.so|/vendor/lib/libshim_atomic.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_modules.so|/vendor/lib/libshim_mmcamera2.so
+TARGET_LD_SHIM_LIBS += /vendor/lib64/lib-imsvt.so|/vendor/lib64/libshim_ims.so
+TARGET_LD_SHIM_LIBS += /vendor/lib64/libril-qc-qmi-1.so|/vendor/lib64/rild_socket.so
+TARGET_LD_SHIM_LIBS += /vendor/lib64/libizat_core.so|/vendor/lib64/libshims_get_process_name.so
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
@@ -232,9 +232,9 @@ BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/bcm43455_sta.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/system/etc/firmware/bcm43455_sta.bin"
-WIFI_DRIVER_FW_PATH_AP  := "/system/etc/firmware/bcm43455_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/bcm43455_sta.bin"
+WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/bcm43455_sta.bin"
+WIFI_DRIVER_FW_PATH_AP  := "/vendor/firmware/bcm43455_apsta.bin"
 
 # inherit from the proprietary version
 -include vendor/smartisan/icesky/BoardConfigVendor.mk

@@ -79,10 +79,10 @@ vendor/lib64/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
-lib/hw/camera.msm8992.so
-lib/libarcsoft_panorama.so
-lib/libmm-qcamera.so
-lib/libmmcamera_interface.so
+lib/hw/camera.msm8992.so:vendor/lib/hw/camera.msm8992.so
+lib/libarcsoft_panorama.so:vendor/lib/libarcsoft_panorama.so
+lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
+lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
 vendor/lib/libSonyIMX230PdafLibrary.so
 vendor/lib/libflash_i2c_led.so
 vendor/lib/libflash_pmic.so
@@ -354,12 +354,12 @@ etc/sensor_denoise_table/sharp_ov5648/ISO800_2560X1440.ncf
 etc/sensor_denoise_table/sharp_ov5648/ISO800_2592X1944.ncf
 
 # Camera firmware
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/cpp_firmware_v1_4_0.fw
-etc/firmware/cpp_firmware_v1_6_0.fw
-etc/firmware/cpp_firmware_v1_8_0.fw
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw
+etc/firmware/cpp_firmware_v1_8_0.fw:vendor/firmware/cpp_firmware_v1_8_0.fw
 
 # Camera models
 vendor/etc/scve/textreco/chardecoder/_conf_eng_num_sym_font40_4transd_zscore_morph_.trn2876.trn
@@ -372,8 +372,8 @@ vendor/etc/scve/textreco/chardecoder/_numpunc_parteng_font40_4transmeshr_morph.t
 vendor/etc/scve/textreco/worddecoder/textreco_url_10000_2.bin
 
 # Keystore
-lib/hw/keystore.qcom.so
-lib64/hw/keystore.qcom.so
+lib/hw/keystore.qcom.so:vendor/lib/hw/keystore.msm8992.so
+lib64/hw/keystore.qcom.so:vendor/lib64/hw/keystore.msm8992.so
 
 # NFC firmware
 vendor/firmware/BCM20795A1_001.002.012.0003.0104_Generic_I2C_NCD_Unsigned_configdata.ncd
@@ -400,9 +400,9 @@ bin/sharp_fw_download
 vendor/firmware/shtsc_fw.bin
 
 # Wi-Fi firmware
-etc/firmware/bcm43455_apsta.bin
-etc/firmware/bcm43455_bt.hcd
-etc/firmware/bcm43455_mfg.bin
-etc/firmware/bcm43455_nvram.txt
-etc/firmware/bcm43455_pciehdr.bin
-etc/firmware/bcm43455_sta.bin
+etc/firmware/bcm43455_apsta.bin:vendor/firmware/bcm43455_apsta.bin
+etc/firmware/bcm43455_bt.hcd:vendor/firmware/bcm43455_bt.hcd
+etc/firmware/bcm43455_mfg.bin:vendor/firmware/bcm43455_mfg.bin
+etc/firmware/bcm43455_nvram.txt:vendor/firmware/bcm43455_nvram.txt
+etc/firmware/bcm43455_pciehdr.bin:vendor/firmware/bcm43455_pciehdr.bin
+etc/firmware/bcm43455_sta.bin:vendor/firmware/bcm43455_sta.bin

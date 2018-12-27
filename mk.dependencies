@@ -1,14 +1,10 @@
 [
   {
-   "repository": "android_kernel_smartisan_msm8992",
-   "target_path": "kernel/smartisan/msm8992"
+    "repository": "android_kernel_smartisan_msm8992",
+    "target_path": "kernel/smartisan/msm8992"
   },
   {
-   "repository": "android_vendor_smartisan_icesky",
-   "target_path": "vendor/smartisan/icesky"
-  },
-  {
-    "repository": "android_device_qcom_common",
-    "target_path": "device/qcom/common"
+    "repository": "android_vendor_smartisan_icesky",
+    "target_path": "vendor/smartisan/icesky"
   }
 ]

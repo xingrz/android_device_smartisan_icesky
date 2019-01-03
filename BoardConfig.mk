@@ -76,9 +76,6 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 

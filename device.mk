@@ -175,6 +175,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/gps/etc,$(TARGET_COPY_OUT_SYSTEM)/etc)
 
+# Input
+PRODUCT_PACKAGES += \
+    KeyHandlerIcesky
+
 # IPv6
 PRODUCT_PACKAGES += \
     ebtables \

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The MoKee Open Source Project
+# Copyright (C) 2018-2019 The MoKee Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -123,12 +123,6 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
-
-# MK Hardware
-BOARD_HARDWARE_CLASS += \
-    hardware/mokee/mkhw \
-    $(DEVICE_PATH)/mkhw
-BOARD_USES_MOKEE_HARDWARE := true
 
 # CNE and DPM
 BOARD_USES_QCNE := true

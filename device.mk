@@ -202,7 +202,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.mokee.livedisplay@1.0-service-legacymm
+    vendor.mokee.livedisplay@2.0-service-legacymm
 
 # Media
 PRODUCT_COPY_FILES += \

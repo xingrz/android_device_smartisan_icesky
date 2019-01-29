@@ -90,7 +90,6 @@ bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.msm8992.so:vendor/lib/hw/camera.vendor.msm8992.so
 lib/libarcsoft_panorama.so:vendor/lib/libarcsoft_panorama.so
 lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
-lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
 vendor/lib/libSonyIMX230PdafLibrary.so
 vendor/lib/libflash_i2c_led.so
 vendor/lib/libflash_pmic.so

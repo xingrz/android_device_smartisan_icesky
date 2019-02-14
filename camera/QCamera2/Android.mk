@@ -35,6 +35,13 @@ LOCAL_SRC_FILES += \
 LOCAL_CFLAGS := -Wall -Wextra -Werror
 LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS
 
+LOCAL_CFLAGS += \
+        -Wno-unused-const-variable \
+        -Wno-unused-private-field \
+        -Wno-tautological-pointer-compare \
+        -Wno-pointer-bool-conversion \
+        -Wno-format \
+
 #HAL 1.0 Flags
 LOCAL_CFLAGS += -DDEFAULT_DENOISE_MODE_ON -DHAL3
 

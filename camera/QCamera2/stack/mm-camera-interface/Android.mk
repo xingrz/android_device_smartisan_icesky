@@ -42,6 +42,9 @@ ifneq (1,$(filter 1,$(shell echo "$$(( $(PLATFORM_SDK_VERSION) >= 17 ))" )))
 endif
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
+LOCAL_CFLAGS += \
+        -Wno-pointer-bool-conversion \
+
 LOCAL_SRC_FILES := $(MM_CAM_FILES)
 
 LOCAL_MODULE           := libmmcamera_interface

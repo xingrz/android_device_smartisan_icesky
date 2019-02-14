@@ -1271,7 +1271,7 @@ void QCamera3RawDumpChannel::dumpRawSnapshot(mm_camera_buf_def_t *frame)
  * RETURN          : NA
  *==========================================================================*/
 void QCamera3RawDumpChannel::streamCbRoutine(mm_camera_super_buf_t *super_frame,
-                                                QCamera3Stream *stream)
+                                                __unused QCamera3Stream *stream)
 {
     CDBG("%s: E",__func__);
     if (super_frame == NULL || super_frame->num_bufs != 1) {

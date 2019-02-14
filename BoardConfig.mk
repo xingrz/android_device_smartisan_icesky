@@ -211,6 +211,7 @@ TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libsh
 TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libshim_camera.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_algorithm.so|/vendor/lib/libshim_atomic.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_modules.so|/vendor/lib/libshim_mmcamera2.so
+TARGET_LD_SHIM_LIBS += /vendor/lib/liboemcamera.so|/vendor/lib/libshim_atomic.so
 TARGET_LD_SHIM_LIBS += /vendor/lib64/lib-imsvt.so|/vendor/lib64/libshim_ims.so
 TARGET_LD_SHIM_LIBS += /vendor/lib64/libril-qc-qmi-1.so|/vendor/lib64/rild_socket.so
 TARGET_LD_SHIM_LIBS += /vendor/lib64/libizat_core.so|/vendor/lib64/libshims_get_process_name.so

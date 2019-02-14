@@ -664,6 +664,7 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_AWB_LOCK,                     uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_BESTSHOT_MODE,                uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_DIS_ENABLE,                   int32_t,                     1);
+    INCLUDE(SMARTISAN_01,                               uint8_t,                     4);
     INCLUDE(CAM_INTF_PARM_LED_MODE,                     int32_t,                     1);
     INCLUDE(CAM_INTF_META_LED_MODE_OVERRIDE,            uint32_t,                    1);
 
@@ -701,6 +702,8 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_LOCK_CAF,                     int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_VIDEO_HDR,                    int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_SENSOR_HDR,                   int32_t,                     1);
+    INCLUDE(SMARTISAN_02,                               uint8_t,                     4);
+    INCLUDE(SMARTISAN_03,                               uint8_t,                     4);
     INCLUDE(CAM_INTF_PARM_VT,                           int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_GET_CHROMATIX,                tune_chromatix_t,            1);
     INCLUDE(CAM_INTF_PARM_SET_RELOAD_CHROMATIX,         tune_chromatix_t,            1);
@@ -722,6 +725,7 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_BURST_LED_ON_PERIOD,          uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_LONGSHOT_ENABLE,              int8_t,                      1);
     INCLUDE(CAM_INTF_PARM_TONE_MAP_MODE,                uint32_t,                    1);
+    INCLUDE(SMARTISAN_04,                               uint8_t,                     5);
 
     /* HAL3 specific */
     INCLUDE(CAM_INTF_META_STREAM_INFO,                  cam_stream_size_info_t,      1);

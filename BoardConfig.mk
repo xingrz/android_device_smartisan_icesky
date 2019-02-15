@@ -118,9 +118,6 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 DEVICE_SPECIFIC_CAMERA_PATH := $(DEVICE_PATH)/camera
-TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
-TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/mm-qcamera-daemon=22
 
@@ -207,8 +204,6 @@ TARGET_RIL_VARIANT := caf
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor-minimal
 
 # Shims
-TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libshim_atomic.so
-TARGET_LD_SHIM_LIBS += /vendor/lib/hw/camera.vendor.msm8992.so|/vendor/lib/libshim_camera.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_algorithm.so|/vendor/lib/libshim_atomic.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_modules.so|/vendor/lib/libshim_mmcamera2.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/liboemcamera.so|/vendor/lib/libshim_atomic.so

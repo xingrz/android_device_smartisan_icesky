@@ -142,7 +142,6 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     camera.msm8992 \
     libshim_atomic \
-    libshim_camera \
     libshim_mmcamera2
 
 PRODUCT_PACKAGES += \

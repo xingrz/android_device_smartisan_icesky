@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2018 The MoKee Open Source Project
+# Copyright (C) 2018-2019 The MoKee Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -49,9 +49,17 @@ setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false "$CLEAN_VENDOR"
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC_QC" "$SECTION"
 
+"$MY_DIR"/setup-makefiles.sh
+
 BLOB_ROOT="$MK_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+
+# Audio
+sed -i 's|/system/etc/|/vendor/etc/|g' $BLOB_ROOT/vendor/lib/hw/audio.primary.msm8992.so
+sed -i 's|/system/etc/|/vendor/etc/|g' $BLOB_ROOT/vendor/lib/libacdbloader.so
+sed -i 's|/system/etc/|/vendor/etc/|g' $BLOB_ROOT/vendor/lib64/hw/audio.primary.msm8992.so
+sed -i 's|/system/etc/|/vendor/etc/|g' $BLOB_ROOT/vendor/lib64/libacdbloader.so
+sed -i 's|/system/lib/|/vendor/lib/|g' $BLOB_ROOT/vendor/lib/hw/audio.primary.msm8992.so
+sed -i 's|/system/lib/|/vendor/lib/|g' $BLOB_ROOT/vendor/lib64/hw/audio.primary.msm8992.so
 
 # QMI
 sed -i 's|qcom_diag|oem_2950|g' $BLOB_ROOT/vendor/etc/permissions/qti_permissions.xml
-
-"$MY_DIR"/setup-makefiles.sh

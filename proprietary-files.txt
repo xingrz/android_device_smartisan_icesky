@@ -20,19 +20,19 @@ vendor/lib64/libadsprpc.so
 
 # Audio
 bin/tinymix
-etc/drc/drc_cfg_AZ.txt
-etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
-lib/hw/audio.primary.msm8992.so
-lib/libaudioparameter.so
-lib/libaudioresampler.so
-lib/libtfa98xx.so
+etc/drc/drc_cfg_AZ.txt:vendor/etc/drc/drc_cfg_AZ.txt
+etc/surround_sound_3mic/surround_sound_rec_AZ.cfg:vendor/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
+lib/hw/audio.primary.msm8992.so:vendor/lib/hw/audio.primary.msm8992.so
+lib/libaudioparameter.so:vendor/lib/libaudioparameter.so
+lib/libaudioresampler.so:vendor/lib/libaudioresampler.so
+lib/libtfa98xx.so:vendor/lib/libtfa98xx.so
 lib/libtinyalsa.so
-lib/libtinycompress.so
-lib64/hw/audio.primary.msm8992.so
-lib64/libaudioparameter.so
-lib64/libtfa98xx.so
+lib/libtinycompress.so:vendor/lib/libtinycompress.so
+lib64/hw/audio.primary.msm8992.so:vendor/lib64/hw/audio.primary.msm8992.so
+lib64/libaudioparameter.so:vendor/lib64/libaudioparameter.so
+lib64/libtfa98xx.so:vendor/lib64/libtfa98xx.so
 lib64/libtinyalsa.so
-lib64/libtinycompress.so
+lib64/libtinycompress.so:vendor/lib64/libtinycompress.so
 vendor/lib/libqct_resampler.so
 vendor/lib/libsrsprocessing.so
 vendor/lib/libacdb-fts.so

@@ -418,7 +418,7 @@ service cnd /vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
 
-service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot

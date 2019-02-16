@@ -100,6 +100,15 @@ on boot
     chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch
     write /proc/sys/kernel/sched_boost 1
 
+    # Keypad
+    chown system system /proc/keypad/left_down
+    chown system system /proc/keypad/left_up
+    chown system system /proc/keypad/right_down
+    chown system system /proc/keypad/right_up
+    chown system system /proc/keypad/nav_left
+    chown system system /proc/keypad/nav_middle
+    chown system system /proc/keypad/nav_right
+
 #start camera server as daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start

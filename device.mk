@@ -94,6 +94,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    libshims_tinyalsa \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@4.0-impl \
     android.hardware.soundtrigger@2.0-impl \

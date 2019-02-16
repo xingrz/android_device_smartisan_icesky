@@ -204,6 +204,8 @@ TARGET_RIL_VARIANT := caf
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor-minimal
 
 # Shims
+TARGET_LD_SHIM_LIBS += /system/lib/libtinyalsa.so|/system/lib/libshims_tinyalsa.so
+TARGET_LD_SHIM_LIBS += /system/lib64/libtinyalsa.so|/system/lib64/libshims_tinyalsa.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_algorithm.so|/vendor/lib/libshim_atomic.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/libmmcamera2_stats_modules.so|/vendor/lib/libshim_mmcamera2.so
 TARGET_LD_SHIM_LIBS += /vendor/lib/liboemcamera.so|/vendor/lib/libshim_atomic.so

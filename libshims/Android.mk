@@ -24,7 +24,8 @@ LOCAL_SHARED_LIBRARIES := \
     libui \
     libgui \
     libutils \
-    libcutils
+    libcutils \
+    libsensor
 
 LOCAL_MODULE := libshim_mmcamera2
 LOCAL_MODULE_TAGS := optional

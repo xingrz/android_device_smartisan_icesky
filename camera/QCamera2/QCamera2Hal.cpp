@@ -32,7 +32,7 @@
 
 static hw_module_t camera_common = {
     .tag = HARDWARE_MODULE_TAG,
-    .module_api_version = CAMERA_MODULE_API_VERSION_2_3,
+    .module_api_version = CAMERA_MODULE_API_VERSION_2_4,
     .hal_api_version = HARDWARE_HAL_API_VERSION,
     .id = CAMERA_HARDWARE_MODULE_ID,
     .name = "QCamera Module",
@@ -50,5 +50,6 @@ camera_module_t HAL_MODULE_INFO_SYM = {
     .get_vendor_tag_ops = qcamera::QCamera3VendorTags::get_vendor_tag_ops,
     .open_legacy = qcamera::QCamera2Factory::open_legacy,
     .set_torch_mode = NULL,
+    .init = NULL,
     .reserved = {0}
 };

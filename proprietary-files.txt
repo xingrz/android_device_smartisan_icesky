@@ -87,8 +87,6 @@ vendor/lib64/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
-lib/hw/camera.msm8992.so:vendor/lib/hw/camera.vendor.msm8992.so
-lib/libarcsoft_panorama.so:vendor/lib/libarcsoft_panorama.so
 lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
 vendor/lib/libSonyIMX230PdafLibrary.so
 vendor/lib/libflash_i2c_led.so
@@ -298,68 +296,6 @@ vendor/lib/libchromatix_sharp_ov5648_snapshot.so
 vendor/lib/libchromatix_sharp_ov5648_zsl.so
 vendor/lib/libchromatix_sharp_ov5648_zsl_scale.so
 
-# Camera etc
-etc/sensor_denoise_table/liteon_imx214/ISO100_3096X3096.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO100_4096X2304.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO100_4160X3120.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO1600_3096X3096.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO1600_4096X2304.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO1600_4160X3120.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO200_3096X3096.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO200_4096X2304.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO200_4160X3120.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO400_3096X3096.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO400_4096X2304.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO400_4160X3120.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO800_3096X3096.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO800_4096X2304.ncf
-etc/sensor_denoise_table/liteon_imx214/ISO800_4160X3120.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO100_1944X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO100_2560X1440.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO100_2592X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO1600_1944X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO1600_2560X1440.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO1600_2592X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO200_1944X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO200_2560X1440.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO200_2592X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO400_1944X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO400_2560X1440.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO400_2592X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO800_1944X1944.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO800_2560X1440.ncf
-etc/sensor_denoise_table/liteon_ov5648/ISO800_2592X1944.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO100_3096X3096.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO100_4096X2304.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO100_4160X3120.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO1600_3096X3096.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO1600_4096X2304.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO1600_4160X3120.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO200_3096X3096.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO200_4096X2304.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO200_4160X3120.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO400_3096X3096.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO400_4096X2304.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO400_4160X3120.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO800_3096X3096.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO800_4096X2304.ncf
-etc/sensor_denoise_table/sharp_imx214/ISO800_4160X3120.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO100_1944X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO100_2560X1440.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO100_2592X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO1600_1944X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO1600_2560X1440.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO1600_2592X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO200_1944X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO200_2560X1440.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO200_2592X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO400_1944X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO400_2560X1440.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO400_2592X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO800_1944X1944.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO800_2560X1440.ncf
-etc/sensor_denoise_table/sharp_ov5648/ISO800_2592X1944.ncf
-
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
@@ -367,16 +303,6 @@ etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw:vendor/firmware/cpp_firmware_v1_8_0.fw
-
-# Camera models
-vendor/etc/scve/textreco/chardecoder/_conf_eng_num_sym_font40_4transd_zscore_morph_.trn2876.trn
-vendor/etc/scve/textreco/chardecoder/_conf_eng_num_sym_font40_conc2_meshrn__de__1_1__zscore_morph.trn10158.trn
-vendor/etc/scve/textreco/chardecoder/_conf_eng_num_sym_font40_rbp_data5100_patch500_5x5_24x24_dim727.trn31585.trn
-vendor/etc/scve/textreco/chardecoder/_eng_font40_4transmeshrnorm6x6_leaflda85_ligature_ext14_c70_sp1lI_newxml3.trn31299.trn
-vendor/etc/scve/textreco/chardecoder/_numpunc_font40_4transmeshrnorm_leafnum1.trn9614.trn
-vendor/etc/scve/textreco/chardecoder/_numpunc_font40_conc2_DEFn__BGTouchy6x6n__1_1__morph.trn32025.trn
-vendor/etc/scve/textreco/chardecoder/_numpunc_parteng_font40_4transmeshr_morph.trn400.trn
-vendor/etc/scve/textreco/worddecoder/textreco_url_10000_2.bin
 
 # Keystore
 lib/hw/keystore.qcom.so:vendor/lib/hw/keystore.msm8992.so

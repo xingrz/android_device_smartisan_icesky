@@ -109,6 +109,9 @@ on boot
     chown system system /proc/keypad/nav_middle
     chown system system /proc/keypad/nav_right
 
+    # Torch
+    chmod 0666 /sys/class/leds/flashlight/brightness
+
 #start camera server as daemon
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start

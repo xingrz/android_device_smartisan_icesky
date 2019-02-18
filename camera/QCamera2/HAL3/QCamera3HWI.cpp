@@ -44,6 +44,7 @@
 #include <utils/Trace.h>
 #include <ui/Fence.h>
 #include <gralloc_priv.h>
+#include "util/QCameraFlash.h"
 #include "QCamera3HWI.h"
 #include "QCamera3Mem.h"
 #include "QCamera3Channel.h"
@@ -546,6 +547,15 @@ int QCamera3HardwareInterface::openCamera()
         ALOGE("Failure: Camera already opened");
         return ALREADY_EXISTS;
     }
+
+    rc = QCameraFlash::getInstance().reserveFlashForCamera(mCameraId);
+    if (rc < 0) {
+        ALOGE("%s: Failed to reserve flash for camera id: %d",
+                __func__,
+                mCameraId);
+        return UNKNOWN_ERROR;
+    }
+
     mCameraHandle = camera_open((uint8_t)mCameraId);
     if (!mCameraHandle) {
         ALOGE("camera_open failed.");
@@ -585,6 +595,12 @@ int QCamera3HardwareInterface::closeCamera()
     rc = mCameraHandle->ops->close_camera(mCameraHandle->camera_handle);
     mCameraHandle = NULL;
     mCameraOpened = false;
+
+    if (QCameraFlash::getInstance().releaseFlashFromCamera(mCameraId) != 0) {
+        CDBG("%s: Failed to release flash for camera id: %d",
+                __func__,
+                mCameraId);
+    }
 
     return rc;
 }

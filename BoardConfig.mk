@@ -221,6 +221,7 @@ WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/bcm43455_sta.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/bcm43455_sta.bin"
 WIFI_DRIVER_FW_PATH_AP  := "/vendor/firmware/bcm43455_apsta.bin"
+WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 
 # inherit from the proprietary version
 -include vendor/smartisan/icesky/BoardConfigVendor.mk

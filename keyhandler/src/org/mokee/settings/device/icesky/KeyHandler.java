@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The MoKee Open Source Project
+ * Copyright (C) 2018-2019 The MoKee Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,20 +32,22 @@ import com.android.internal.os.DeviceKeyHandler;
 
 import mokee.providers.MKSettings;
 
+import org.mokee.internal.util.FileUtils;
+
 public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = "KeyHandler";
 
-    private static final int KEY_HOME = 172;
-
-    private static final String TRUSTED_HOME_DEVICE_NAME = "qpnp_pon";
+    private static final int KEY_NAV_MIDDLE = 0;
 
     private final int longPressTimeout = ViewConfiguration.getLongPressTimeout();
 
+    private final KeyInfo[] keys = new KeyInfo[] {
+        new KeyInfo("nav_middle", "qpnp_pon"),
+    };
+
     private Context context;
     private Vibrator vibrator;
-
-    private int trustedHomeDeviceId = 0;
 
     private boolean ongoingPowerLongPress = false;
 
@@ -68,30 +70,19 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private boolean handleHomeKeyEvent(KeyEvent event) {
-        if (trustedHomeDeviceId == 0) {
-            final String deviceName = getDeviceName(event);
-            if (TRUSTED_HOME_DEVICE_NAME.equals(deviceName)) {
-                trustedHomeDeviceId = event.getDeviceId();
-            } else {
-                return false;
-            }
-        } else {
-            if (trustedHomeDeviceId != event.getDeviceId()) {
-                return false;
-            }
-        }
+        final KeyInfo keyNavMiddle = keys[KEY_NAV_MIDDLE];
 
-        if (event.getScanCode() != KEY_HOME) {
+        if (!keyNavMiddle.match(event)) {
             return false;
         }
 
         switch (event.getAction()) {
             case KeyEvent.ACTION_DOWN:
-                injectKey(KeyEvent.KEYCODE_HOME, KeyEvent.ACTION_DOWN, 0);
+                injectKey(keyNavMiddle.keyCode, KeyEvent.ACTION_DOWN, 0);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        injectKey(KeyEvent.KEYCODE_HOME, KeyEvent.ACTION_UP, KeyEvent.FLAG_CANCELED);
+                        injectKey(keyNavMiddle.keyCode, KeyEvent.ACTION_UP, KeyEvent.FLAG_CANCELED);
                         injectKey(KeyEvent.KEYCODE_POWER);
                         doHapticFeedback();
                     }
@@ -110,7 +101,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     injectKey(KeyEvent.KEYCODE_POWER, KeyEvent.ACTION_UP, 0);
                     ongoingPowerLongPress = false;
                 } else {
-                    injectKey(KeyEvent.KEYCODE_HOME, KeyEvent.ACTION_UP, 0);
+                    injectKey(keyNavMiddle.keyCode, KeyEvent.ACTION_UP, 0);
                     handler.removeCallbacksAndMessages(null);
                 }
                 break;
@@ -150,6 +141,51 @@ public class KeyHandler implements DeviceKeyHandler {
         if (enabled) {
             vibrator.vibrate(50);
         }
+    }
+
+    private class KeyInfo {
+
+        final String file;
+        final String deviceName;
+        final int scanCode;
+        int deviceId;
+        int keyCode;
+
+        KeyInfo(String file, String deviceName) {
+            int scanCode;
+            this.file = "/proc/keypad/" + file;
+            this.deviceName = deviceName;
+            try {
+                scanCode = Integer.parseInt(FileUtils.readOneLine(this.file));
+            } catch (NumberFormatException ignored) {
+                scanCode = 0;
+            }
+            this.scanCode = scanCode;
+        }
+
+        boolean match(KeyEvent event) {
+            if (deviceId == 0) {
+                final String deviceName = getDeviceName(event);
+                if (this.deviceName.equals(deviceName)) {
+                    deviceId = event.getDeviceId();
+                } else {
+                    return false;
+                }
+            } else {
+                if (deviceId != event.getDeviceId()) {
+                    return false;
+                }
+            }
+
+            if (event.getScanCode() == scanCode) {
+                keyCode = event.getKeyCode();
+            } else {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 
 }

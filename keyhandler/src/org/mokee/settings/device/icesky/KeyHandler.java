@@ -41,6 +41,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_NAV_MIDDLE = 0;
 
     private final int longPressTimeout = ViewConfiguration.getLongPressTimeout();
+    private final int longLongPressTimeout = 2000;
 
     private final KeyInfo[] keys = new KeyInfo[] {
         new KeyInfo("nav_middle", "qpnp_pon"),
@@ -86,7 +87,7 @@ public class KeyHandler implements DeviceKeyHandler {
                         injectKey(KeyEvent.KEYCODE_POWER);
                         doHapticFeedback();
                     }
-                }, longPressTimeout);
+                }, "power_tap", longPressTimeout);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -94,7 +95,7 @@ public class KeyHandler implements DeviceKeyHandler {
                         doHapticFeedback();
                         ongoingPowerLongPress = true;
                     }
-                }, 2000);
+                }, "power_hold", longLongPressTimeout);
                 break;
             case KeyEvent.ACTION_UP:
                 if (ongoingPowerLongPress) {
@@ -102,7 +103,8 @@ public class KeyHandler implements DeviceKeyHandler {
                     ongoingPowerLongPress = false;
                 } else {
                     injectKey(keyNavMiddle.keyCode, KeyEvent.ACTION_UP, 0);
-                    handler.removeCallbacksAndMessages(null);
+                    handler.removeCallbacksAndMessages("power_tap");
+                    handler.removeCallbacksAndMessages("power_hold");
                 }
                 break;
         }

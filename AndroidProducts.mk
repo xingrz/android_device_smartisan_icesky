@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mk_icesky.mk
+    $(LOCAL_DIR)/omni_icesky.mk

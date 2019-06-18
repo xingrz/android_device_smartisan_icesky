@@ -1,0 +1,2 @@
+add_lunch_combo omni_icesky-eng
+add_lunch_combo omni_icesky-userdebug

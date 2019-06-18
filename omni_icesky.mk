@@ -20,10 +20,10 @@ PRODUCT_RELEASE_NAME := icesky
 $(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/mk/config/common.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := mk_icesky
+PRODUCT_NAME := omni_icesky
 PRODUCT_BRAND := SMARTISAN
 PRODUCT_DEVICE := icesky
 PRODUCT_MANUFACTURER := smartisan

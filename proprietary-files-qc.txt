@@ -6,6 +6,8 @@ bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 bin/port-bridge:vendor/bin/port-bridge
 vendor/lib/libbtnv.so
 vendor/lib64/libCommandSvc.so
+vendor/lib64/libaptXHD_encoder.so|76eb03998f9b4f98029a4408076685892726e45a
+vendor/lib64/libaptX_encoder.so|a407a92a6eb467886c3970629ebcab4db95b7600
 vendor/lib64/libbtnv.so
 
 # Camera

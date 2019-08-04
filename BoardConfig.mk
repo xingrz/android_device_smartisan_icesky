@@ -23,9 +23,6 @@
 
 DEVICE_PATH := device/smartisan/icesky
 
-# SDClang configuration
-TARGET_USE_SDCLANG := true
-
 # Assertion
 TARGET_OTA_ASSERT_DEVICE := icesky,icesky_msm8992
 

@@ -834,3 +834,6 @@ service LKCore-rel /system/vendor/bin/LKCore
     disabled
     user system
     group system log oem_2950
+
+on property:apexd.status=ready
+    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind

@@ -26,6 +26,9 @@ DEVICE_PATH := device/smartisan/icesky
 # Assertion
 TARGET_OTA_ASSERT_DEVICE := icesky,icesky_msm8992
 
+# Build
+BUILD_BROKEN_DUP_RULES := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8992
 TARGET_NO_BOOTLOADER := true

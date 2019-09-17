@@ -300,10 +300,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl
-
 # Touch
 PRODUCT_PACKAGES += \
     vendor.mokee.touch@1.0-service.icesky

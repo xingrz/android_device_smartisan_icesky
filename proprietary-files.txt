@@ -81,10 +81,6 @@ etc/tfa98xx/nxp_g.speaker
 etc/tfa98xx/nxp_voice.eq
 etc/tfa98xx/nxp_voice.preset
 
-# Bluetooth
-vendor/lib/libbt-vendor.so
-vendor/lib64/libbt-vendor.so
-
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so

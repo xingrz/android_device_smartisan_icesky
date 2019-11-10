@@ -183,50 +183,11 @@ service time_daemon /vendor/bin/time_daemon
    user root
    group root
 
-service scitd /system/bin/scitd
-   class late_start
-   socket scitd stream 660 shell factory
-   user root
-   group root
-
 service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
    group media
 
-on property:init.svc.scitd=running
-    chown root factory /dev/block/mmcblk0p36
-    chown root factory /dev/block/mmcblk0p38
-    chown root factory /dev/block/mmcblk0p39
-    chown root factory /dev/block/mmcblk0p41
-    chmod 0660 /dev/block/mmcblk0p36
-    chmod 0660 /dev/block/mmcblk0p38
-    chmod 0660 /dev/block/mmcblk0p39
-    chmod 0660 /dev/block/mmcblk0p41
-
-    chown root factory /sys/bus/msm_subsys/devices/subsys1/restart_level
-    chown system factory /sys/devices/virtual/timed_output/vibrator/enable
-    chown system factory /sys/class/leds/red/brightness
-    chown system factory /sys/class/leds/green/brightness
-    chown system factory /sys/class/leds/blue/brightness
-    chown system factory /sys/class/leds/flashlight/brightness
-
-    chmod 0664 /sys/bus/msm_subsys/devices/subsys1/restart_level
-    chmod 0664 /sys/devices/virtual/timed_output/vibrator/enable
-    chmod 0664 /sys/class/leds/red/brightness
-    chmod 0664 /sys/class/leds/green/brightness
-    chmod 0664 /sys/class/leds/blue/brightness
-    chmod 0664 /sys/class/leds/flashlight/brightness
-
-    chown nfc factory /dev/bcm2079x
-    chmod 0660 /dev/bcm2079x
-#
-#service wcnss-service /system/bin/wcnss_service
-#    class late_start
-#    user root
-#    group system wifi
-#    oneshot
-#
 service ppd /vendor/bin/mm-pp-daemon
     class late_start
     user system

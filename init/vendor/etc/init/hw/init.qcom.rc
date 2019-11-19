@@ -423,46 +423,11 @@ service tftp_server /vendor/bin/tftp_server
    class core
    user root
 
-on property:wc_transport.start_hci=true
-    start start_hci_filter
-
-on property:wc_transport.start_hci=false
-    stop start_hci_filter
-
-service start_hci_filter /vendor/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth oem_2950
-    disabled
-
-on property:wc_transport.start_root=true
-    start hci_filter_root
-
-on property:wc_transport.start_root=false
-    stop hci_filter_root
-
-service hci_filter_root /vendor/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth oem_2950 system
-    disabled
-
 service config_bt_addr /vendor/bin/btnvtool -O
     class core
     user bluetooth
     group bluetooth radio
     oneshot
-on property:wc_transport.start_root=true
-    start hci_filter_root
-
-on property:wc_transport.start_root=false
-    stop hci_filter_root
-
-service hci_filter_root /system/bin/wcnss_filter
-    class late_start
-    user bluetooth
-    group bluetooth oem_2950 net_bt_stack system
-    disabled
 
 service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     class core
